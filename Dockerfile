@@ -12,4 +12,4 @@ RUN conda install -y pytorch=0.3.0 torchvision cuda90 -c pytorch
 RUN pip install scikit-umfpack
 RUN pip install cupy
 RUN pip install pynvrtc
-
+RUN pip install flask==0.12.2
