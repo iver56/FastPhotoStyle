@@ -1,4 +1,5 @@
 import base64
+import os
 import tempfile
 
 import six
@@ -18,7 +19,7 @@ MAX_NUM_PIXELS = 1024 * 512
 # Load model
 p_wct = PhotoWCT()
 try:
-    p_wct.load_state_dict(torch.load('./PhotoWCTModels/photo_wct.pth'))
+    p_wct.load_state_dict(torch.load(os.path.join(os.path.dirname(__file__), 'PhotoWCTModels', 'photo_wct.pth')))
 except:
     print("Fail to load PhotoWCT models. PhotoWCT submodule not updated?")
     exit()
