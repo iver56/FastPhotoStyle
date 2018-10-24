@@ -9,7 +9,7 @@ RUN wget https://repo.continuum.io/archive/Anaconda2-5.0.1-Linux-x86_64.sh -P /t
 RUN bash /tmp/Anaconda2-5.0.1-Linux-x86_64.sh -b -p $ANACONDA
 RUN rm /tmp/Anaconda2-5.0.1-Linux-x86_64.sh -rf
 RUN conda install -y pytorch=0.3.0 torchvision cuda90 -c pytorch
-RUN pip install scikit-umfpack
+RUN pip install scikit-umfpack==0.3.1
 RUN pip install cupy
 RUN pip install pynvrtc
 RUN pip install flask==0.12.2
