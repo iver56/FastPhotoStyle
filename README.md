@@ -17,9 +17,22 @@ This code repository contains an implementation of our fast photorealistic style
 
 
 
-### Code usage
+### Code usage (Ubuntu with nvidia-docker)
 
-Please check out the [user manual page](USAGE.md).
+First, install docker (It will also install nvidia-docker2, which we need):
+https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
 
+Then clone iver56's fork of FastPhotoStyle, which includes a simple REST API web service:
 
+* `git clone https://github.com/iver56/FastPhotoStyle.git`
+* `cd FastPhotoStyle`
+* `git submodule update --init --recursive`
+* `bash download_models.sh`
 
+Build docker image (this typically takes at least 7 minutes, so you might want to grab a coffee or something while you wait):  
+`sudo docker build -t fast-photo-style:v1.0 .`
+
+Start the web service inside docker (you must replace the example username "iver" in the command):  
+`sudo docker run -d -v /home/iver/FastPhotoStyle:/root/FastPhotoStyle --net=host --runtime=nvidia fast-photo-style:v1.0 /opt/anaconda2/bin/python /root/FastPhotoStyle/web_service.py`
+
+You can now access the REST API on port 5000
